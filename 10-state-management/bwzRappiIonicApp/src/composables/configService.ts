@@ -1,15 +1,13 @@
-//import { readonly, ref } from 'vue';
 import { useStorageService } from './storageService';
 
 export interface InputValidation { error?: string }
 
-// ...
-const { data, setData } = useStorageService('playerName', '');
+const { data: playerName, setData: storePlayerName } = useStorageService('playerName', '');
 
 export function useConfigService() {
   const setPlayerName = (value?: string | null) => {
     if (checkPlayerName(value)) {
-      setData(value!);
+      storePlayerName(value!);
       // playerName.value = value!;
     }
   };
@@ -23,7 +21,7 @@ export function useConfigService() {
   };
 
   return {
-    playerName: data, // readonly(playerName),
+    playerName,
     setPlayerName,
     checkPlayerName,
   }
