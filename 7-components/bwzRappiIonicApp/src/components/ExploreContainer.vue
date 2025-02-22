@@ -43,9 +43,9 @@ import { IonButtons, IonButton, IonModal, IonHeader,
 import { ref } from 'vue';
 import { useConfigService, InputValidation } from '@/composables/configService'; 
 
-defineProps({
-  name: String,
-});
+defineProps<{
+  name: string,
+}>();
 
 const { playerName, setPlayerName, checkPlayerName } = useConfigService();
 

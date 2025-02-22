@@ -3,7 +3,9 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['fieldClick']);
+const emit = defineEmits<{
+ fieldClick: [ ]
+}>();
 defineProps<{
   value: string
 }>();
