@@ -1,5 +1,11 @@
 {
-    "recommendations": [
-        "ionic.ionic"
-    ]
+  "recommendations": [
+    "Vue.volar",
+    "WebNative.webnative",
+    "ms-vscode.remote-repositories",
+    "PKief.material-icon-theme",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "GitHub.vscode-pull-request-github"
+  ]
 }
