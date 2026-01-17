@@ -8,7 +8,14 @@
         <span class="badge">{{ entry.move }}</span>
         Move {{ entry.x }} / {{ entry.y }}
       </div>
-      <button type="button" title="delete message" @click="removeMove(entry.move)" class="remove-message">X</button>
+      <button
+        type="button"
+        title="delete message"
+        @click="removeMove(entry.move)"
+        class="remove-message"
+      >
+        X
+      </button>
     </li>
   </ul>
 </template>
