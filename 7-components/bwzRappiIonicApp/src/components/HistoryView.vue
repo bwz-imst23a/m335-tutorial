@@ -8,24 +8,31 @@
         <span class="badge">{{ entry.move }}</span>
         Move {{ entry.x }} / {{ entry.y }}
       </div>
-      <button type="button" title="delete message" class="remove-message" @click="removeMove(entry.move)">X</button>
+      <button
+        type="button"
+        title="delete message"
+        @click="removeMove(entry.move)"
+        class="remove-message"
+      >
+        X
+      </button>
     </li>
   </ul>
   <p><button @click="goToGame()">Game</button></p>
 </template>
-  
-<script setup lang="ts">
-import { useHistoryService } from '../composables/historyService';
-import { useRouter } from 'vue-router';
 
-const router = useRouter();
-const { history, removeMove } = useHistoryService();
+<script setup lang="ts">
+import { useHistoryService } from '../composables/historyService'
+import { useIonRouter } from '@ionic/vue'
+
+const router = useIonRouter()
+const { history, removeMove } = useHistoryService()
 
 const goToGame = () => {
-  router.push({ name: 'game' });
+  router.push({ name: 'game' })
 }
 </script>
-  
+
 <style scoped>
 .messages {
   margin: 0 0 2em 0;
@@ -40,8 +47,8 @@ const goToGame = () => {
 .messages div {
   color: #333;
   text-decoration: none;
-  background-color: #EEE;
-  margin: .5em;
+  background-color: #eee;
+  margin: 0.5em;
   line-height: 1.8em;
   border-radius: 4px;
   display: block;
@@ -55,7 +62,7 @@ const goToGame = () => {
   color: white;
   background-color: #405061;
   min-width: 2rem;
-  margin-right: .8em;
+  margin-right: 0.8em;
   border-radius: 4px 0 0 4px;
 }
 

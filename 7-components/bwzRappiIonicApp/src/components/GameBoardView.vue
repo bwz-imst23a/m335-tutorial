@@ -8,17 +8,27 @@
       @fieldClick="selectField(row - 1, col - 1)"
     />
   </div>
-  <div v-if="!winner">
+  <div v-if="draw">
+    <div>Draw, please start a new game.</div>
+  </div>
+  <div v-else-if="!winner">
     <div>Now playing: {{ activePlayer }}</div>
   </div>
   <div v-else>The winner is: {{ winner }}</div>
+  <p><button @click="reset()">Reset</button> <button @click="goToHistory()">History</button></p>
 </template>
 
 <script setup lang="ts">
-import GameField from './GameField.vue'
+import GameField from '../components/GameField.vue'
 import { useGameService } from '@/composables/gameService'
+import { useIonRouter } from '@ionic/vue'
 
-const { fields, selectField, activePlayer, winner } = useGameService()
+const router = useIonRouter()
+const { reset, fields, selectField, activePlayer, winner, draw } = useGameService()
+
+const goToHistory = () => {
+  router.push('./history')
+}
 </script>
 
 <style scoped>

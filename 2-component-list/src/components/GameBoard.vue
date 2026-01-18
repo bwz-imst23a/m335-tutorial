@@ -1,7 +1,8 @@
 <template>
-  <div v-for="row in 3" class="row">
+  <div v-for="row in 3" :key="row" class="row">
     <game-field
       v-for="col in 3"
+      :key="col"
       :isAlternating="(row + col) % 2 === 0"
       :value="fields[row - 1]![col - 1]!"
       @fieldClick="handleClick(row - 1, col - 1)"
