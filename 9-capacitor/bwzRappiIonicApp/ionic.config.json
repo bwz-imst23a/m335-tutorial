@@ -1,7 +1,0 @@
-{
-  "name": "bwzRappiIonicApp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "vue-vite"
-}
