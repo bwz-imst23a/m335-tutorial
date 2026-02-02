@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <h4>{{ name }}</h4>
+    <h4>About Tic-Tac-Toe</h4>
     <div><ion-button id="settings">Open Settings</ion-button></div>
   </div>
   <ion-modal ref="modal" @ionModalWillPresent="open" trigger="settings">

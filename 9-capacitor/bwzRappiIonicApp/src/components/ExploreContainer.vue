@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <h4>{{ name }}</h4>
+    <h4>About Tic-Tac-Toe</h4>
     <div><ion-button id="settings">Open Settings</ion-button></div>
   </div>
   <ion-modal ref="modal" @ionModalWillPresent="open" trigger="settings">
@@ -18,19 +18,36 @@
     <ion-content class="ion-padding">
       <ion-item>
         <ion-input
-          label="Player"
+          label="Player X"
           label-placement="stacked"
           type="text"
           placeholder="Your name"
-          :error-text="playerNameValidation?.error"
-          @ionInput="validatePlayerName"
-          @ionBlur="playerNameTouched = true"
+          :error-text="playerXNameValidation?.error"
+          @ionInput="validatePlayerXName"
+          @ionBlur="playerXNameTouched = true"
           :class="{
-            'ion-valid': playerNameValidation && !playerNameValidation.error,
-            'ion-invalid': playerNameValidation?.error,
-            'ion-touched': playerNameTouched,
+            'ion-valid': playerXNameValidation && !playerXNameValidation.error,
+            'ion-invalid': playerXNameValidation?.error,
+            'ion-touched': playerXNameTouched,
           }"
-          v-model="playerNameEdit"
+          v-model="playerXNameEdit"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Player O"
+          label-placement="stacked"
+          type="text"
+          placeholder="Your name"
+          :error-text="playerONameValidation?.error"
+          @ionInput="validatePlayerOName"
+          @ionBlur="playerONameTouched = true"
+          :class="{
+            'ion-valid': playerONameValidation && !playerONameValidation.error,
+            'ion-invalid': playerONameValidation?.error,
+            'ion-touched': playerONameTouched,
+          }"
+          v-model="playerONameEdit"
         ></ion-input>
       </ion-item>
     </ion-content>
@@ -39,45 +56,64 @@
 
 <script setup lang="ts">
 import { IonButtons, IonButton, IonModal, IonHeader,
-  IonContent, IonToolbar, IonTitle, IonItem, IonInput } from '@ionic/vue';
-import { ref } from 'vue';
-import { useConfigService, InputValidation } from '@/composables/configService'; 
+  IonContent, IonToolbar, IonTitle, IonItem, IonInput } from '@ionic/vue'
+import { ref } from 'vue'
+import { useConfigService, InputValidation } from '@/composables/configService'
 
 defineProps<{
   name: string,
-}>();
+}>()
 
-const { playerName, setPlayerName, checkPlayerName } = useConfigService();
+const { playerXName, setPlayerXName, checkPlayerXName,
+  playerOName, setPlayerOName, checkPlayerOName } = useConfigService()
 
 /* UI Code */
-const modal = ref();
+const modal = ref()
 const cancel = () => {
-  modal.value.$el.dismiss(); // close the dialog
-};
+  modal.value.$el.dismiss() // close the dialog
+}
 const confirm = () => {
-  if (!playerNameValidation.value) {
-    validatePlayerName();
+  if (!playerXNameValidation.value) {
+    validatePlayerXName()
+  }
+  if (!playerONameValidation.value) {
+    validatePlayerOName()
   }
 
-  if (!playerNameValidation.value?.error) {
-    setPlayerName(playerNameEdit.value); // store the entire configuration (including the players name)
-    modal.value.$el.dismiss(); // close the dialog
+  if (!playerXNameValidation.value?.error && !playerONameValidation.value?.error) {
+    setPlayerXName(playerXNameEdit.value) // store the configuration
+    setPlayerOName(playerONameEdit.value)
+    modal.value.$el.dismiss() // thereafter, close the dialog
   }
-};
+}
 const open = () => { 
-  playerNameTouched.value = false;
-  playerNameValidation.value = null;
-  playerNameEdit.value = playerName.value; // load the configuration
-};
+  playerXNameTouched.value = false
+  playerXNameValidation.value = null
+  playerXNameEdit.value = playerXName.value // load the configuration
+
+  playerONameTouched.value = false
+  playerONameValidation.value = null
+  playerONameEdit.value = playerOName.value // load the configuration
+}
 
 /* UI State - Validation Code */
-const validatePlayerName = () => {
-  playerNameTouched.value = true;
-  playerNameValidation.value = checkPlayerName(playerNameEdit.value);
-};
-const playerNameTouched = ref(false);
-const playerNameValidation = ref<InputValidation | null>(null);
-const playerNameEdit = ref(''); // default value ''
+const validatePlayerXName = () => {
+  playerXNameTouched.value = true
+  playerXNameValidation.value = checkPlayerXName(playerXNameEdit.value)
+}
+
+const validatePlayerOName = () => {
+  playerONameTouched.value = true
+  playerONameValidation.value = checkPlayerOName(playerONameEdit.value)
+}
+
+const playerXNameTouched = ref(false)
+const playerXNameValidation = ref<InputValidation | null>(null)
+const playerXNameEdit = ref('') // default value ''
+
+const playerONameTouched = ref(false)
+const playerONameValidation = ref<InputValidation | null>(null)
+const playerONameEdit = ref('') // default value ''
 </script>
 
 <style scoped>

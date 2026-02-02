@@ -1,27 +1,44 @@
-import { readonly, ref } from 'vue';
+import { readonly, ref } from 'vue'
 
 export interface InputValidation { error?: string }
 
-const playerName = ref(''); // load config from local Storage
+const playerXName = ref('') // load config from local Storage
+const playerOName = ref('') // load config from local Storage
 
 export function useConfigService() {
-  const setPlayerName = (value?: string | null) => {
-    if (checkPlayerName(value)) {
-      playerName.value = value!;
+  const setPlayerXName = (value?: string | null) => {
+    if (checkPlayerXName(value)) {
+      playerXName.value = value!
     }
-  };
-
-  const checkPlayerName = (value?: string | null) => {
+  }
+  const checkPlayerXName = (value?: string | null) => {
     if (value && value.length > 2) {
-      return { }; // value is valid
+      return { } // value is valid
     } else {
-      return { error: 'Invalid Name' };
+      return { error: 'Invalid Name' }
     }
-  };
+  }
+
+  const setPlayerOName = (value?: string | null) => {
+    if (checkPlayerOName(value)) {
+      playerOName.value = value!
+    }
+  }
+  const checkPlayerOName = (value?: string | null) => {
+    if (value && value.length > 2) {
+      return { } // value is valid
+    } else {
+      return { error: 'Invalid Name' }
+    }
+  }
 
   return {
-    playerName: readonly(playerName),
-    setPlayerName,
-    checkPlayerName,
+    playerXName: readonly(playerXName),
+    setPlayerXName,
+    checkPlayerXName,
+
+    playerOName: readonly(playerOName),
+    setPlayerOName,
+    checkPlayerOName,
   }
 }

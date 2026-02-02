@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-import { RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory } from '@ionic/vue-router'
+import { RouteRecordRaw } from 'vue-router'
 import TabsPage from '../views/TabsPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/tabs/game'
   },
   {
     path: '/tabs/',
@@ -14,25 +14,20 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '',
         name: 'game',
-        redirect: '/tabs/tab1'
+        redirect: '/tabs/game'
+      },
+      {
+        path: 'game',
+        component: () => import('@/views/GamePage.vue')
       },
       {
         path: 'history',
-        redirect: '/tabs/tab2'
-      },
-
-      {
-        path: 'tab1',
-        component: () => import('@/views/Tab1Page.vue')
+        component: () => import('@/views/HistoryPage.vue')
       },
       {
-        path: 'tab2',
-        component: () => import('@/views/Tab2Page.vue')
+        path: 'about',
+        component: () => import('@/views/AboutPage.vue')
       },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3Page.vue')
-      }
     ]
   }
 ]
