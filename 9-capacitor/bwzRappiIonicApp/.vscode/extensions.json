@@ -6,6 +6,7 @@
     "PKief.material-icon-theme",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "GitHub.vscode-pull-request-github"
+    "GitHub.vscode-pull-request-github",
+    "Webnative.webnative"
   ]
 }

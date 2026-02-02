@@ -1,18 +1,18 @@
 # Ionic CLI
 
-The Ionic command line interface (CLI) is your go-to tool for developing [Ionic][ionic-homepage] apps.
+The Ionic command line interface (CLI) is your go-to tool for developing [Ionic](https://bwz-rappi-m335.azurewebsites.net/docs/tutorial-ionic/create-an-app) apps.
 
 ### Installation
 
 ```
-npm install -g @ionic/cli
+npm install @ionic/cli
 ```
 
 Detailed installation instructions can be found in the [CLI documentation](https://ionicframework.com/docs/installation/cli).
 
 ### Usage
 
-The Ionic CLI ships with command documentation, accessible in your terminal by using the `--help` flag. These docs are also available [online][ionic-cli-docs].
+The Ionic CLI ships with command documentation, accessible in your terminal by using the `--help` flag. These docs are also available [online](https://ionicframework.com/docs/cli).
 
 * For a list of commands:
 
@@ -32,4 +32,4 @@ ionic cordova run --help
 
 ---
 
-:book: **Documentation**: [https://ionicframework.com/docs/cli][ionic-cli-docs]
+:book: **Documentation**: [ionicframework.com/docs/cli](https://ionicframework.com/docs/cli)
