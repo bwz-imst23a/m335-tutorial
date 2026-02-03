@@ -12,7 +12,7 @@
     <div>Draw, please start a new game.</div>
   </div>
   <div v-else-if="!winner">
-    <div>Now playing: {{ activePlayer }}</div>
+    <div>Now playing: {{ (activePlayer === 'X') ? playerXName : playerOName }} as {{ activePlayer }}</div>
   </div>
   <div v-else>The winner is: {{ winner }}</div>
   <p><ion-button fill="outline" @click="reset()">Reset</ion-button></p>
@@ -21,9 +21,11 @@
 <script setup lang="ts">
 import GameField from '../components/GameField.vue'
 import { useGameService } from '@/composables/gameService'
-import { IonButton } from '@ionic/vue';
+import { useConfigService } from '@/composables/configService'
+import { IonButton } from '@ionic/vue'
 
 const { reset, fields, selectField, activePlayer, winner, draw } = useGameService()
+const { playerXName, playerOName } = useConfigService()
 </script>
 
 <style scoped>
