@@ -8,12 +8,13 @@
     <RouterView />
   </main>
   <small>Path: {{ $route.fullPath }}</small>
-  <small> | <weather-data /></small>
+  <small> | <weather-data /> in <location-data /></small>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import WeatherData from './components/WeatherData.vue'
+import LocationData from './components/LocationData.vue';
 
 const title = ref('Tic-Tac-Toe')
 </script>
