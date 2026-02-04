@@ -49,8 +49,8 @@ export function useGameService() {
           winner.value = activePlayer.value
         } else {
           activePlayer.value = activePlayer.value === 'X' ? 'O' : 'X'
+          draw.value = history.value.length === 9
         }
-        draw.value = history.value.length === 9
       }
     },
     reset: () => {
